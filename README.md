@@ -35,14 +35,18 @@ import styledDropdown from 'styledDropdown';
 - and the code below
 
 ```js
-new StyledDropdown('dropdown', [{ value: 1, label: 'Option 1' }, { value: 2, label: 'Option 2' }]);
+createStyledDropdown("dropdown", [
+	{ href: "#", label: "Link 1" },
+	{ href: "#", label: "Link 2" },
+	{ href: "#", label: "Link 3" },
+]);
 ```
 
 In this example:
 
 - 'dropdown' is the id of the HTML element where the dropdown menu will be rendered.
 
-- The array provides the options for the dropdown menu. Each option is an object with two properties: value and label. value is the value to be used when this option is selected. label is the text to be displayed for this option in the dropdown menu.
+- The array provides the options for the dropdown menu. Each option is an object with two properties: href and label. href is the link to be used when this option is selected. label is the text to be displayed for this option in the dropdown menu.
 
 ## Building the project
 

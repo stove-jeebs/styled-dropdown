@@ -1,41 +1,35 @@
-import "./style.css";
+import styles from "./style.css?inline";
 
-class StyledDropdown {
-	constructor(elementId, options) {
-		this.element = document.getElementById(elementId);
-		this.options = options;
-		this.injectStyles();
-		this.render();
+export default function createStyledDropdown(elementId, links) {
+	const element = document.getElementById(elementId);
+
+	function injectStyles() {
+		const style = document.createElement("style");
+		style.id = "styledDropdownStyles";
+		style.textContent = styles;
+		document.head.append(style);
 	}
 
-	injectStyles() {
-		const existingStyle = document.getElementById("styledDropdownStyles");
-		if (!existingStyle) {
-			const style = document.createElement("style");
-			style.id = "styledDropdownStyles";
-			style.textContent = `
-        select {
-          color: #333;
-          padding: 10px;
-          font-size: 1em;
-          border-radius: 5px;
-          border: 1px solid #999;
-        }
-      `;
-			document.head.append(style);
-		}
-	}
+	function render() {
+		const dropdownContent = document.createElement("div");
+		dropdownContent.className = "dropdown-content";
 
-	render() {
-		const select = document.createElement("select");
-		this.options.forEach((option) => {
-			const optionElement = document.createElement("option");
-			optionElement.value = option.value;
-			optionElement.text = option.label;
-			select.appendChild(optionElement);
+		links.forEach((link) => {
+			const aElement = document.createElement("a");
+			aElement.href = link.href;
+			aElement.textContent = link.label;
+			dropdownContent.appendChild(aElement);
 		});
-		this.element.appendChild(select);
-	}
-}
 
-export default StyledDropdown;
+		const button = document.createElement("button");
+		button.className = "dropbtn";
+		button.textContent = "Dropdown";
+
+		element.className = "dropdown";
+		element.appendChild(button);
+		element.appendChild(dropdownContent);
+	}
+
+	injectStyles();
+	render();
+}
