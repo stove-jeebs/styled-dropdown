@@ -1,4 +1,4 @@
-import styles from "./style.css?inline";
+import styles from "./style.css";
 
 export default function createStyledDropdown(elementId, links) {
 	const element = document.getElementById(elementId);
