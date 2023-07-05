@@ -47,9 +47,3 @@ In this example:
 - 'dropdown' is the id of the HTML element where the dropdown menu will be rendered.
 
 - The array provides the options for the dropdown menu. Each option is an object with two properties: href and label. href is the link to be used when this option is selected. label is the text to be displayed for this option in the dropdown menu.
-
-## Building the project
-
-You can bundle the project using Vite by running `npm run build`
-
-or build the project using vite's development server with `npm run dev`
